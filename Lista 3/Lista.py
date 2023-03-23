@@ -102,9 +102,28 @@ class Lista:
     def insereFim(self, valor):
         novo_valor = NoLista(valor, None)
         final = self.ultimo()
-        if final.getInfo() != None:
-           final.setProx(novo_valor)
-        else:
-            self.primeiro = novo_valor
+        if final == None:
+            self.primeiro = self.primeiro = novo_valor
+            return
+        final.setProx(novo_valor)
 
-    
+    def igual(self, lista):
+        nodoListaEstrangeira = lista.primeiro
+        nodoListaAtual = self.primeiro
+        while True:
+            if (nodoListaAtual == None): 
+                if (nodoListaEstrangeira == None):
+                    return True
+                else:
+                    return False
+            
+            if (nodoListaEstrangeira == None): 
+                if (nodoListaAtual == None):
+                    return True
+                else:
+                    return False
+
+            if nodoListaAtual.getInfo() != nodoListaEstrangeira.getInfo():
+                return False
+            nodoListaAtual = nodoListaAtual.getProx()
+            nodoListaEstrangeira = nodoListaEstrangeira.getProx()
