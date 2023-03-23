@@ -70,5 +70,41 @@ class Lista:
         while (nodo.getProx() != None):
             nodo = nodo.getProx()
         return nodo
+
+    def retira(self, valor):
+        if self.vazia():
+            return
+        if self.busca(valor) == None:
+            return
         
-        
+        nodo = self.primeiro
+        anterior = None
+
+        while (True):
+            if nodo == None:
+                anterior.setProx(None)
+            
+            if nodo.getInfo() == valor:
+                if anterior == None:
+                    self.primeiro = self.primeiro.getProx()
+                    return
+                else:
+                    anterior.setProx(nodo.getProx())
+                    return
+
+            if nodo.getProx() != None:
+                anterior = nodo         
+            nodo = nodo.getProx()
+    
+    def libera(self):
+        self.primeiro = None
+
+    def insereFim(self, valor):
+        novo_valor = NoLista(valor, None)
+        final = self.ultimo()
+        if final.getInfo() != None:
+           final.setProx(novo_valor)
+        else:
+            self.primeiro = novo_valor
+
+    
