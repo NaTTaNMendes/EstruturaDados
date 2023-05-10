@@ -1,12 +1,12 @@
 from NoArvoreBinaria import NoArvoreBinaria
 
-class NoArvoreBinaria:
+class ArvoreBinaria:
     
     def __init__(self):
         self.raiz = None
     
     def vazia(self):
-        return self.raiz.getInfo() == None
+        return self.raiz == None
     
     def insere(self, valor, esq, dir):
         nova_arvore = NoArvoreBinaria(valor, esq, dir)
@@ -14,11 +14,28 @@ class NoArvoreBinaria:
         return nova_arvore
 
     def pertence(self, info):
-        return self.pertence(self.raiz, info)
+        return self.pertenceAux(self.raiz, info)               
     
-    def pertence(self, nodo, info):
+    def pertenceAux(self, nodo, info):
         if nodo == None:
             return False
         else:
-            return ((nodo.getInfo() == info) or (self.ertence(nodo.getSae(), info)) or (self.pertence(nodo.getSad(), info)))
-    
+            return ((nodo.getInfo() == info) or (self.pertenceAux(nodo.getSae(), info)) or (self.pertenceAux(nodo.getSad(), info)))
+
+    def numNos(self):
+        if self.vazia():
+            return 0
+        return self.raiz.numNosAux(self.raiz)   
+
+    def imprimePre(self, nodo):
+        saida = ""
+        saida += "<"
+        if (nodo != None):
+            saida += str(nodo.getInfo())
+            saida += self.imprimePre(nodo.getSae())
+            saida += self.imprimePre(nodo.getSad())
+        saida += ">"
+        return saida
+
+    def __str__(self):
+        return self.imprimePre(self.raiz)

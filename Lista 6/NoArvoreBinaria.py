@@ -1,12 +1,15 @@
 class NoArvoreBinaria:
     
-    def __init__(self, info):
-        self.info = info
-    
     def __init__(self, info, esq, dir):
         self.info = info
-        self.esq = esq
-        self.dir = dir
+        self.esq = None
+        self.dir = None
+
+        if esq != None:
+            self.esq = esq
+
+        if dir != None:
+            self.dir = dir
         
     def setInfo(self, info):
         self.info = info
@@ -26,11 +29,16 @@ class NoArvoreBinaria:
     def getSad(self):
         return self.dir
     
+    def numNosAux(self, nodo):
+        if nodo == None:
+            return 0
+        return 1 + nodo.numNosAux(nodo.getSae()) + nodo.numNosAux(nodo.getSad())
+    
     def imprimir(self, nodo):
         if self.info == None:
             return ""
         saida = ""
-        saida += self.info + " "
+        saida += str(self.info) + " "
         saida += self.imprimir(nodo.esq)
         saida += self.imprimir(nodo.dir)
         return saida
