@@ -29,6 +29,11 @@ class NoArvoreBinaria:
     def getSad(self):
         return self.dir
     
+    def alturaAux(self, nodo):
+        if nodo == None:
+            return 0
+        return 1 + max(nodo.alturaAux(nodo.getSae()), nodo.alturaAux(nodo.getSad()))
+
     def folhasAux(self, nodo):
         if ((nodo.getSae() == None) and (nodo.getSad() == None)):
             return 1
