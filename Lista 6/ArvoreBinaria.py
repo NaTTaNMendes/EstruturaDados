@@ -40,7 +40,10 @@ class ArvoreBinaria:
     def numNos(self):
         if self.vazia():
             return 0
-        return self.raiz.numNosAux(self.raiz)   
+        return self.raiz.numNosAux(self.raiz)
+
+    def igual(self, arvore):
+        return self.raiz.igualAux(self.raiz, arvore.raiz)  
 
     def imprimePre(self, nodo):
         saida = ""

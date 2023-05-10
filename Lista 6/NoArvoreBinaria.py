@@ -39,6 +39,18 @@ class NoArvoreBinaria:
             return 1
         return nodo.numNosAux(nodo.getSae()) + nodo.numNosAux(nodo.getSad())
     
+    def igualAux(self, nodoAtual, nodoEstrangeiro):
+        if ((nodoAtual == None) and (nodoEstrangeiro == None)):
+            return True
+        
+        if ((nodoAtual == None) or (nodoEstrangeiro == None)):
+            return False
+        
+        if (nodoAtual.getInfo() != nodoEstrangeiro.getInfo()):
+            return False
+        
+        return self.igualAux(nodoAtual.getSae(), nodoEstrangeiro.getSae()) and self.igualAux(nodoAtual.getSae(), nodoEstrangeiro.getSae())
+    
     def numNosAux(self, nodo):
         if nodo == None:
             return 0
