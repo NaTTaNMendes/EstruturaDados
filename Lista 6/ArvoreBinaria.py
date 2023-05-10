@@ -22,6 +22,11 @@ class ArvoreBinaria:
         else:
             return ((nodo.getInfo() == info) or (self.pertenceAux(nodo.getSae(), info)) or (self.pertenceAux(nodo.getSad(), info)))
 
+    def folhas(self):
+        if self.vazia():
+            return 0
+        return self.raiz.folhasAux(self.raiz) 
+    
     def pares(self):
         if self.vazia():
             return 0

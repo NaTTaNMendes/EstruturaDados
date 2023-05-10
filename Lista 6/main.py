@@ -10,4 +10,4 @@ n1 = NoArvoreBinaria(4, n2, n3)
 arvore.insere(n1.getInfo(), n1.getSae(), n1.getSad())
 
 print(arvore)
-print(arvore.pares())
+print(arvore.folhas())
