@@ -34,6 +34,14 @@ class NoArvoreBinaria:
             return 0
         return 1 + nodo.numNosAux(nodo.getSae()) + nodo.numNosAux(nodo.getSad())
     
+    def paresAux(self, nodo):
+        if nodo == None:
+            return 0
+        if ((nodo.getInfo() % 2) == 0):
+            return 1 + nodo.paresAux(nodo.getSae()) + nodo.paresAux(nodo.getSad())
+        else:
+           return nodo.paresAux(nodo.getSae()) + nodo.paresAux(nodo.getSad()) 
+    
     def imprimir(self, nodo):
         if self.info == None:
             return ""
