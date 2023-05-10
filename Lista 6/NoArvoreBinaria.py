@@ -35,9 +35,11 @@ class NoArvoreBinaria:
         return 1 + max(nodo.alturaAux(nodo.getSae()), nodo.alturaAux(nodo.getSad()))
 
     def folhasAux(self, nodo):
+        if nodo == None:
+            return 0
         if ((nodo.getSae() == None) and (nodo.getSad() == None)):
             return 1
-        return nodo.numNosAux(nodo.getSae()) + nodo.numNosAux(nodo.getSad())
+        return nodo.folhasAux(nodo.getSae()) + nodo.folhasAux(nodo.getSad())
     
     def igualAux(self, nodoAtual, nodoEstrangeiro):
         if ((nodoAtual == None) and (nodoEstrangeiro == None)):

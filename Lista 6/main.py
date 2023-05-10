@@ -13,4 +13,17 @@ arvore.insere(n1.getInfo(), n1.getSae(), n1.getSad())
 arvore2.insere(n1.getInfo(), n1.getSae(), n1.getSad())
 
 print(arvore)
+
+print(arvore.vazia())
+
+print(arvore.pertence(10))
+
+print(arvore.pares())
+
+print(arvore.folhas())
+
+print(arvore.numNos())
+
+print(arvore.altura())
+
 print(arvore.igual(arvore2))
