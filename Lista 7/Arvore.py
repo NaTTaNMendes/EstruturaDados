@@ -67,5 +67,18 @@ class Arvore:
 
         return contagem
     
+    def folhas(self):
+        return self.folhasAux(self.raiz)
+    
+    def folhasAux(self, nodo):
+        if not nodo.filhos:
+            return 1
+            
+        contagem = 0    
+        for filho in nodo.filhos:
+            contagem += self.folhasAux(filho)
+
+        return contagem
+    
     def __str__(self):
         return self.imprimePre(self.raiz)
