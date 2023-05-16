@@ -53,5 +53,19 @@ class Arvore:
             
         return resultado + 1
     
+    def pares(self):
+        return self.paresAux(self.raiz)
+    
+    def paresAux(self, nodo):
+        contagem = 0
+        
+        if (nodo.informacao % 2) == 0:
+            contagem += 1
+
+        for filho in nodo.filhos:
+            contagem += self.paresAux(filho)
+
+        return contagem
+    
     def __str__(self):
         return self.imprimePre(self.raiz)
