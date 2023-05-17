@@ -74,11 +74,38 @@ class Arvore:
         if not nodo.filhos:
             return 1
             
-        contagem = 0    
+        contagem = 0
         for filho in nodo.filhos:
             contagem += self.folhasAux(filho)
 
         return contagem
+
+    def igual(self, arvore):
+        if self.quantidadeItens() != arvore.quantidadeItens():
+            return False        
+        return self.igualAux(self.raiz, arvore.raiz)
+    
+    def igualAux(self, arvoreAtual, arvoreEstrangeira):
+        
+        if (arvoreAtual.informacao != arvoreEstrangeira.informacao):
+            return False
+        
+        for index, filho in enumerate(arvoreAtual.filhos):
+            if not self.igualAux(arvoreAtual.filhos[index], arvoreEstrangeira.filhos[index]):
+                return False
+        
+        return True
+
+    def quantidadeItens(self):
+        return self.quantidadeItensAux(self.raiz)        
+    
+    def quantidadeItensAux(self, arvore):
+        if arvore is None:
+            return 0
+        count = 1  
+        for filho in arvore.filhos:
+            count += self.quantidadeItensAux(filho) 
+        return count
     
     def __str__(self):
         return self.imprimePre(self.raiz)
