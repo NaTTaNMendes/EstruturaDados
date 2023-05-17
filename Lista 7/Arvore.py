@@ -107,5 +107,20 @@ class Arvore:
             count += self.quantidadeItensAux(filho) 
         return count
     
+    def copia(self):
+        raiz = self.copiaAux(self.raiz)
+        retorno = Arvore()
+        retorno.insere(raiz.informacao, raiz.filhos)
+        return retorno
+    
+    def copiaAux(self, nodo):    
+        
+        novos_nodos = []
+        for filho in nodo.filhos:
+            novo_nodo = self.copiaAux(filho)
+            novos_nodos.append(novo_nodo)
+        
+        return NoArvore(nodo.informacao, novos_nodos)
+    
     def __str__(self):
         return self.imprimePre(self.raiz)

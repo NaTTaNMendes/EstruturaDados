@@ -30,4 +30,5 @@ print(arvore.pares())
 print(arvore.folhas())
 print(arvore.quantidadeItens())
 print(arvore.igual(arvore2))
-
+arvore2 = arvore.copia()
+print(arvore2)
